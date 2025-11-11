@@ -1,3 +1,4 @@
 .vscode/settings.json
 .env
 *.txt
+Q2/__pycache__/ComplexNumber.cpython-311.pyc
