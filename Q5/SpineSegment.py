@@ -1,5 +1,5 @@
 class SpineSegment:
-    def __init__(self, first_element, on_init):
+    def __init__(self, first_element: int, on_init) -> None:
         self.left = None
         self.right = None
         self.middle = first_element
@@ -8,14 +8,14 @@ class SpineSegment:
         self._completed = False  # prevents double-calling
 
     @property
-    def is_complete(self):
+    def is_complete(self) -> bool:
         return (
             self.left is not None and
             self.right is not None and
             self.middle is not None
         )
 
-    def add_element(self, new_element):
+    def add_element(self, new_element: int) -> bool:
         added = False
         if new_element < self.middle and not self.left:
             self.left = new_element
@@ -27,7 +27,18 @@ class SpineSegment:
             added = False
         return added
 
-    def __repr__(self):
+    @property
+    def quality(self) -> int:
+        seg_string = ""
+        if self.left:
+            seg_string += str(self.left)
+        if self.middle:
+            seg_string += str(self.middle)
+        if self.right:
+            seg_string += str(self.right)
+        return int(seg_string)
+
+    def __repr__(self) -> str:
         string = ""
         if self.left:
             string += f'{self.left}-'
