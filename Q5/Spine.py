@@ -23,16 +23,16 @@ class Spine:
         lesser = min(len(self.spine_segs), len(other.spine_segs))
 
         for i in range(lesser):
-            if self.spine_segs[i].quality < other.spine_segs[i].quality:
+            if self.spine_segs[i].quality > other.spine_segs[i].quality:
                 return -1
-            elif self.spine_segs[i].quality > other.spine_segs[i].quality:
+            elif self.spine_segs[i].quality < other.spine_segs[i].quality:
                 return 1
 
         # If they are identical, instead use the ID for comparison
         if self.id < other.id:
-            return -1
-        elif self.id > other.id:
             return 1
+        elif self.id > other.id:
+            return -1
         raise Exception
 
     def __repr__(self):
